@@ -6,15 +6,15 @@
 // };
 
 enum Subject {
-  maths = "maths",
-  language = "language",
-  science = "science",
-  history = "history",
-  coding = "coding",
-  geography = "geography",
-  economics = "economics",
-  finance = "finance",
-  business = "business",
+  maths = "Maths",
+  language = "Language",
+  science = "Science",
+  history = "History",
+  coding = "Coding",
+  geography = "Geography",
+  economics = "Economics",
+  finance = "Finance",
+  business = "Business",
 }
 
 type Companion = Models.DocumentList<Models.Document> & {
