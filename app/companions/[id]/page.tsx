@@ -5,11 +5,11 @@ import { getSubjectColor } from "@/lib/utils";
 import Image from "next/image";
 import CompanionComponent from "@/components/CompanionComponent";
 
-interface CompanionsSessionPageProps {
+interface CompanionSessionPageProps {
   params: Promise<{ id: string }>;
 }
 
-const CompanionSession = async ({ params }: CompanionsSessionPageProps) => {
+const CompanionSession = async ({ params }: CompanionSessionPageProps) => {
   const { id } = await params;
   const companion = await getCompanion(id);
   const user = await currentUser();
@@ -24,7 +24,7 @@ const CompanionSession = async ({ params }: CompanionsSessionPageProps) => {
       <article className="flex rounded-border justify-between p-6 max-md:flex-col">
         <div className="flex items-center gap-2">
           <div
-            className="size-[72px] flex item-center justify-between rounded-lg max-md:hidden"
+            className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden"
             style={{ backgroundColor: getSubjectColor(subject) }}
           >
             <Image
@@ -34,6 +34,7 @@ const CompanionSession = async ({ params }: CompanionsSessionPageProps) => {
               height={35}
             />
           </div>
+
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <p className="font-bold text-2xl">{name}</p>
@@ -46,6 +47,7 @@ const CompanionSession = async ({ params }: CompanionsSessionPageProps) => {
           {duration} minutes
         </div>
       </article>
+
       <CompanionComponent
         {...companion}
         companionId={id}

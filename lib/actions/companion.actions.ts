@@ -143,7 +143,6 @@ export const newCompanionPermissions = async () => {
   }
 };
 
-// Bookmarks
 export const addBookmark = async (companionId: string, path: string) => {
   const { userId } = await auth();
   if (!userId) return;
@@ -180,7 +179,7 @@ export const getBookmarkedCompanions = async (userId: string) => {
   const supabase = createSupabaseClient();
   const { data, error } = await supabase
     .from("bookmarks")
-    .select(`companions:companion_id (*)`) 
+    .select(`companions:companion_id (*)`)
     .eq("user_id", userId);
   if (error) {
     throw new Error(error.message);
