@@ -19,9 +19,13 @@ const Profile = async () => {
 
   if (!user) redirect("/sign-in");
 
-  const companions = await getUserCompanions(user.id);
-  const sessionHistory = await getUserSessions(user.id);
-  const bookmarkedCompanions = await getBookmarkedCompanions(user.id);
+  const companions = ((await getUserCompanions(user.id)) || []).filter(Boolean);
+  const sessionHistory = ((await getUserSessions(user.id)) || []).filter(
+    Boolean
+  );
+  const bookmarkedCompanions = (
+    (await getBookmarkedCompanions(user.id)) || []
+  ).filter(Boolean);
 
   return (
     <main className="min-lg:w-3/4">
